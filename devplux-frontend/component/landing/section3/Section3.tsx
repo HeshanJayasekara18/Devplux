@@ -24,7 +24,7 @@ const projects = [
     title: "Zenith Cloud",
     category: "SaaS Dashboard",
     description: "A premium cloud management workspace for high-growth engineering teams and developers.",
-    image: "https://images.unsplash.com/photo-1504868584819-f8eec5969145?q=80&w=1000&auto=format&fit=crop",
+    image: "/res/images/zenith-cloud.png",
     link: "#",
     github: "#",
   },
@@ -34,7 +34,27 @@ export default function Section3() {
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12 md:py-32" suppressHydrationWarning>
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 flex flex-col items-end text-right md:mb-24">
+        <div className="relative mb-16 flex flex-col items-end text-right md:mb-24">
+          {/* Robotic Hand on Left Side */}
+          <div className="absolute left-0 top-0 -translate-x-[10%] -translate-y-[20%] w-[40%] max-w-[500px] pointer-events-none hidden lg:block">
+            <div className="relative">
+              {/* Ambient Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]"></div>
+              
+              {/* Hand Image */}
+              <Image 
+                src="/res/images/robohandbg.png" 
+                alt="Robotic Hand" 
+                width={500} 
+                height={400} 
+                className="h-auto w-full object-contain animate-float-subtle"
+                style={{
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(59,130,246,0.15))',
+                }}
+              />
+            </div>
+          </div>
+
           <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
             Featured Works
           </h2>

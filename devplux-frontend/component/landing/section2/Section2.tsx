@@ -90,7 +90,7 @@ export default function Section2() {
           </div>
 
           {/* Right - 3D Robotic Hand */}
-          <div className="absolute top-0 right-0 w-[60%] h-full flex items-start justify-end pointer-events-none">
+          <div className="absolute mr-12 mtop-0 right-0 w-[70%] h-full flex items-start justify-end pointer-events-none">
             {/* Ambient Glow */}
             <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-600/8 rounded-full blur-[150px]"></div>
             
