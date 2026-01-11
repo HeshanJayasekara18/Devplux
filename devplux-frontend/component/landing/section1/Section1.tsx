@@ -67,9 +67,12 @@ export default function Section1() {
             We bridge the gap between abstract concepts and powerful digital solutions.
           </p>
 
-          <button className="rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-widest text-black transition-transform hover:scale-105 active:scale-95">
+          <a 
+            href="mailto:contact@devplux.com?subject=Let's Build Something Amazing&body=Hi Devplux Team,%0D%0A%0D%0AI'm interested in working with you on a project.%0D%0A%0D%0A"
+            className="inline-block rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-widest text-black transition-transform hover:scale-105 active:scale-95"
+          >
             Build with Us
-          </button>
+          </a>
         </div>
       </div>
 

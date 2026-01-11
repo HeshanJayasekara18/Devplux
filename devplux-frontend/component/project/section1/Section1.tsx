@@ -30,7 +30,7 @@ export default function Section1() {
           className="max-w-4xl text-5xl font-bold tracking-tighter text-white md:text-7xl lg:text-8xl"
         >
           Crafting Digital <br />
-          <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r bg-blue-600 bg-clip-text text-transparent">
             Experiences
           </span>
         </motion.h1>

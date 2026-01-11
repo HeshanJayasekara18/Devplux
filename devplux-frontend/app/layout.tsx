@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/component/common/SmoothScrolling";
-import CursorModel from "@/component/common/CursorModel";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,9 +27,6 @@ export default function RootLayout({
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
-        
-        {/* 3D Cursor Model */}
-        <CursorModel />
         
         {/* Gooey Filter */}
         <svg style={{ visibility: 'hidden', position: 'absolute' }} width="0" height="0">
