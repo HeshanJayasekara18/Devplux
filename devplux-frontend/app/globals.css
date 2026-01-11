@@ -78,3 +78,19 @@ body {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0) rotateX(0) rotateY(0);
+  }
+  33% {
+    transform: translateY(-20px) rotateX(2deg) rotateY(-2deg);
+  }
+  66% {
+    transform: translateY(10px) rotateX(-1deg) rotateY(1deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 8s ease-in-out infinite;
+}
