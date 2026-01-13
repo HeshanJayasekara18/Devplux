@@ -7,7 +7,7 @@ import Footer from "@/component/common/footer/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full" suppressHydrationWarning>
+    <main className="min-h-screen w-full overflow-x-hidden" suppressHydrationWarning>
       <Navbar />
       <Section1 />
       <Section2 />

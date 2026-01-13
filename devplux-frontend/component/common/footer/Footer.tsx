@@ -1,6 +1,7 @@
 "use client";
 
-import { Instagram, Twitter, Linkedin, Github, Mail, ArrowRight } from "lucide-react";
+import { Instagram, Linkedin, Mail, ArrowRight, Facebook } from "lucide-react";
+import { Music2 as TikTok } from "lucide-react"; // TikTok icon (using Music2 as alternative)
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,10 +25,10 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               {[
+                { icon: <Facebook size={18} />, href: "https://www.facebook.com/share/17QZtC7yHM/" },
                 { icon: <Instagram size={18} />, href: "#" },
-                { icon: <Twitter size={18} />, href: "#" },
                 { icon: <Linkedin size={18} />, href: "#" },
-                { icon: <Github size={18} />, href: "#" },
+                { icon: <TikTok size={18} />, href: "https://www.tiktok.com/@devplux?_r=1&_t=ZS-930pVbHeWH4" },
               ].map((social, i) => (
                 <a
                   key={i}
@@ -44,10 +45,15 @@ export default function Footer() {
           <div>
             <h4 className="mb-8 text-sm font-bold uppercase tracking-widest text-white">Company</h4>
             <ul className="space-y-4">
-              {["About Us", "Our Workflow", "Success Stories", "Careers", "Contact"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm text-zinc-500 transition-colors hover:text-blue-400">
-                    {link}
+              {[
+                { label: "About Us", href: "/about" },
+                { label: "Our Workflow", href: "/services" },
+                { label: "Careers", href: "/careers" },
+                { label: "Contact", href: "/contact" },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-zinc-500 transition-colors hover:text-blue-400">
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -60,7 +66,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {["Web Development", "Mobile Solutions", "UI/UX Design", "Cloud Architecture", "AI Integration"].map((service) => (
                 <li key={service}>
-                  <a href="#" className="text-sm text-zinc-500 transition-colors hover:text-blue-400">
+                  <a href="/services" className="text-sm text-zinc-500 transition-colors hover:text-blue-400">
                     {service}
                   </a>
                 </li>
@@ -93,11 +99,7 @@ export default function Footer() {
             <p className="text-sm text-zinc-600">
               © {currentYear} Devplux Studio, Sri Lanka. Crafted with precision in the digital void.
             </p>
-            <div className="flex items-center gap-8 text-sm text-zinc-600">
-              <a href="#" className="transition-colors hover:text-zinc-400">Privacy Policy</a>
-              <a href="#" className="transition-colors hover:text-zinc-400">Terms of Service</a>
-              <a href="#" className="transition-colors hover:text-zinc-400">Cookie Settings</a>
-            </div>
+            
           </div>
         </div>
       </div>

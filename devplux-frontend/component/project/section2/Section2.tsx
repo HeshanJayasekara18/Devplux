@@ -54,9 +54,9 @@ export default function Section2() {
 
       <div className="mt-24 flex justify-center pb-24">
         <button className="group relative flex items-center gap-3 overflow-hidden rounded-full bg-white px-8 py-4 text-black transition-all hover:bg-zinc-200">
-          <span className="text-sm font-bold uppercase tracking-widest">
+          {/* <span className="text-sm font-bold uppercase tracking-widest">
             View More Projects
-          </span>
+          </span> */}
           <div className="relative h-4 w-4 overflow-hidden">
              <div className="absolute left-0 top-0 flex h-full w-full translate-x-0 items-center justify-center transition-transform duration-300 group-hover:translate-x-full">
                →

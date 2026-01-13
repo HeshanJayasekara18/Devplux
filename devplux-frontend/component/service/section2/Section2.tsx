@@ -1,6 +1,8 @@
 "use client";
 
 import { Code2, Smartphone, Monitor, Database, Cloud, Cpu, ArrowUpRight } from "lucide-react";
+import ScrollReveal from "@/component/common/animation/ScrollReveal";
+import StaggerContainer, { StaggerItem } from "@/component/common/animation/StaggerContainer";
 
 const services = [
   {
@@ -39,22 +41,24 @@ export default function Section2() {
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12" suppressHydrationWarning>
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-            Our Services
-          </h2>
-          <h3 className="text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
-            Comprehensive <br />
-            <span className="text-zinc-500">Tech Solutions.</span>
-          </h3>
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
+              Our Services
+            </h2>
+            <h3 className="text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+              Comprehensive <br />
+              <span className="text-zinc-500">Tech Solutions.</span>
+            </h3>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer staggerDelay={0.12} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative flex flex-col justify-between rounded-3xl border border-white/5 bg-white/2 p-8 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/20 hover:bg-white/4 hover:-translate-y-1"
-            >
+            <StaggerItem key={index}>
+              <div
+                className="group relative flex flex-col justify-between rounded-3xl border border-white/5 bg-white/2 p-8 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/20 hover:bg-white/4 hover:-translate-y-1"
+              >
               <div>
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600/10 transition-colors group-hover:bg-blue-600/20">
                   {service.icon}
@@ -75,8 +79,9 @@ export default function Section2() {
               {/* Hover Glow Effect */}
               <div className="absolute inset-0 -z-10 rounded-3xl bg-blue-600/5 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

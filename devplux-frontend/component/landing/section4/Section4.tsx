@@ -1,6 +1,8 @@
 "use client";
 
 import { Search, PenTool, Code, Rocket, CheckCircle } from "lucide-react";
+import Parallax from "@/component/common/animation/Parallax";
+import StaggerContainer, { StaggerItem } from "@/component/common/animation/StaggerContainer";
 
 const steps = [
   {
@@ -39,22 +41,24 @@ export default function Section4() {
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12 md:py-32" suppressHydrationWarning>
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 md:mb-24">
-          <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-            Our Process
-          </h2>
-          <h3 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
-            How We Bring Your <br />
-            <span className="text-zinc-500">Ideas to Life.</span>
-          </h3>
-        </div>
+        <Parallax speed={0.2}>
+          <div className="mb-16 md:mb-24">
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
+              Our Process
+            </h2>
+            <h3 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+              How We Bring Your <br />
+              <span className="text-zinc-500">Ideas to Life.</span>
+            </h3>
+          </div>
+        </Parallax>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <StaggerContainer staggerDelay={0.1} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className="group relative flex flex-col items-start rounded-3xl border border-white/5 bg-white/2 p-8 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/20 hover:bg-white/4"
-            >
+            <StaggerItem key={index}>
+              <div
+                className="group relative flex flex-col items-start rounded-3xl border border-white/5 bg-white/2 p-8 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/20 hover:bg-white/4"
+              >
               {/* Step Number Badge */}
               <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600/10 text-xl font-black text-blue-500 transition-all duration-500 group-hover:bg-blue-600 group-hover:text-white">
                 {step.number}
@@ -76,8 +80,9 @@ export default function Section4() {
                 <div className="absolute -right-3 top-1/2 hidden h-[2px] w-6 bg-white/5 lg:block" />
               )}
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
