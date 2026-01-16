@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const projects = [
   {
@@ -30,6 +30,14 @@ const projects = [
     color: "from-purple-600 to-pink-500",
   },
 ];
+
+function getProjectMessage(project: { title: string; category: string }) {
+  const cat = project.category.toLowerCase();
+  if (cat.includes("web")) return "Future‑proof analytics for bold decisions.";
+  if (cat.includes("store") || cat.includes("commerce")) return "Luxury meets code — seamless experiences ahead.";
+  if (cat.includes("mobile")) return "Connecting communities — your next big social story.";
+  return "Crafting the future — let’s build together.";
+}
 
 export default function Section2() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -73,11 +81,19 @@ export default function Section2() {
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
   const isEven = index % 2 === 0;
+  const [showPopup, setShowPopup] = useState(false);
+  const message = getProjectMessage(project);
+
+  useEffect(() => {
+    if (!showPopup) return;
+    const t = setTimeout(() => setShowPopup(false), 3000);
+    return () => clearTimeout(t);
+  }, [showPopup]);
   
   return (
     <div className={`flex flex-col items-center gap-12 md:flex-row ${isEven ? "" : "md:flex-row-reverse"}`}>
       {/* Text Content */}
-      <div className="flex-1 space-y-6 text-center md:text-left">
+      <div className="flex-1 space-y-6 text-center md:text-left relative">
         <motion.div
            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
            whileInView={{ opacity: 1, x: 0 }}
@@ -90,10 +106,43 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             <h2 className="mt-2 text-4xl font-bold text-white md:text-5xl">{project.title}</h2>
             <p className="mt-4 text-lg text-zinc-400">{project.description}</p>
             
-            <button className="group mt-8 flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 mx-auto md:mx-0">
+            <button
+              onClick={() => setShowPopup(true)}
+              className="group mt-8 flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 mx-auto md:mx-0"
+            >
                 View Project
                 <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
+
+            {showPopup && (
+              <motion.div
+                role="dialog"
+                aria-live="polite"
+                initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                className="absolute left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 md:top-full md:mt-2 z-50"
+              >
+                <div className="relative rounded-2xl border border-white/15 bg-black/70 px-4 py-3 shadow-2xl backdrop-blur-md">
+                  <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-gradient-to-r from-white/5 to-white/0" />
+                  <div className="absolute -inset-0.5 -z-20 rounded-3xl bg-gradient-to-r from-blue-600/30 via-purple-600/20 to-cyan-500/30 blur-md" />
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-600/20 text-blue-300">✨</span>
+                    <p className="text-sm text-white/90">
+                      {message}
+                    </p>
+                    <button
+                      aria-label="Close"
+                      onClick={() => setShowPopup(false)}
+                      className="ml-2 rounded-md px-2 py-1 text-xs text-white/60 hover:text-white/90"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
         </motion.div>
       </div>
 

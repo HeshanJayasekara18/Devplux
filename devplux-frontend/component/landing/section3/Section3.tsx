@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Parallax from "@/component/common/animation/Parallax";
 import ScrollReveal from "@/component/common/animation/ScrollReveal";
 import StaggerContainer, { StaggerItem } from "@/component/common/animation/StaggerContainer";
@@ -36,6 +38,22 @@ const projects = [
 
 export default function Section3() {
   const router = useRouter();
+  const [activeDemo, setActiveDemo] = useState<number | null>(null);
+  const [demoMessage, setDemoMessage] = useState<string>("");
+
+  useEffect(() => {
+    if (activeDemo === null) return;
+    const t = setTimeout(() => setActiveDemo(null), 3000);
+    return () => clearTimeout(t);
+  }, [activeDemo]);
+
+  const getMessage = (category: string) => {
+    const c = category.toLowerCase();
+    if (c.includes("ecommerce")) return "Immersive retail — try the experience.";
+    if (c.includes("bank")) return "Secure and swift — fintech at its finest.";
+    if (c.includes("saas")) return "Command the cloud with elegance.";
+    return "Live preview — see ideas in motion.";
+  };
   
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12 md:py-32" suppressHydrationWarning>
@@ -108,7 +126,7 @@ export default function Section3() {
               </div>
 
               {/* Content Side */}
-              <div className="flex flex-col space-y-6">
+              <div className="flex flex-col space-y-6 relative">
                 <span className="text-xs font-bold uppercase tracking-widest text-blue-500">
                   {project.category}
                 </span>
@@ -119,13 +137,46 @@ export default function Section3() {
                   {project.description}
                 </p>
                 <div className="flex items-center gap-8 pt-4">
-                  <a
-                    href={project.link}
+                  <button
+                    onClick={() => {
+                      setDemoMessage(getMessage(project.category));
+                      setActiveDemo(index);
+                      if (project.link && project.link !== "#") {
+                        window.open(project.link, "_blank", "noopener,noreferrer");
+                      }
+                    }}
                     className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:text-blue-400"
                   >
                     Live Demo <ExternalLink size={18} />
-                  </a>
+                  </button>
                 </div>
+
+                {activeDemo === index && (
+                  <motion.div
+                    role="dialog"
+                    aria-live="polite"
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                    className="mt-3 w-fit max-w-[90%] md:max-w-md"
+                  >
+                    <div className="relative rounded-2xl border border-white/15 bg-black/70 px-4 py-3 shadow-2xl backdrop-blur-md">
+                      <div className="absolute -inset-0.5 -z-10 rounded-3xl bg-gradient-to-r from-blue-600/30 via-purple-600/20 to-cyan-500/30 blur-md" />
+                      <div className="flex items-center gap-3">
+                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-600/20 text-blue-300">⚡</span>
+                        <p className="text-sm text-white/90">{demoMessage}</p>
+                        <button
+                          aria-label="Close"
+                          onClick={() => setActiveDemo(null)}
+                          className="ml-2 rounded-md px-2 py-1 text-xs text-white/60 hover:text-white/90"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </div>
             </StaggerItem>
