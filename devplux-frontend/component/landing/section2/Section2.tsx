@@ -73,8 +73,8 @@ export default function Section2() {
 
   return (
     // overflow-visible is CRITICAL here so the hand can leave the section bounds
-    <section ref={containerRef} className="relative w-full min-h-screen bg-black py-16 px-6 md:px-12 overflow-visible z-20">
-      <div className="mx-auto max-w-[1400px]">
+    <section ref={containerRef} className="relative w-full  bg-black py-16 px-6 md:px-12 overflow-visible z-20">
+      <div className="mx-auto ">
         {/* Top Header */}
         <div className="relative mb-2 min-h-[450px] flex items-start">
           <div className="relative z-10 pt-8 max-w-xl">
