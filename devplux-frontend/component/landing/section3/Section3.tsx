@@ -43,7 +43,7 @@ export default function Section3() {
       <div className="mx-auto ">
         <div className="relative mb-16 flex flex-col items-end text-right md:mb-24">
           {/* Robotic Hand on Left Side */}
-          <Parallax speed={-0.3} className="absolute left-0 top-0 -translate-x-[10%] -translate-y-[20%] w-[40%] max-w-[500px] pointer-events-none hidden lg:block">
+          <Parallax speed={-0.3} className="absolute left-0 top-0 -translate-x-[10%] -translate-y-[30%] w-[60%] max-w-[800px] pointer-events-none hidden lg:block">
             <div className="relative">
               {/* Ambient Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]"></div>

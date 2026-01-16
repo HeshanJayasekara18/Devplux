@@ -40,7 +40,7 @@ const steps = [
 export default function Section4() {
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12 md:py-32" suppressHydrationWarning>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto ">
         <Parallax speed={0.2}>
           <div className="mb-16 md:mb-24">
             <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
