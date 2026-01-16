@@ -2,15 +2,19 @@
 
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Parallax from "@/component/common/animation/Parallax";
+import ScrollReveal from "@/component/common/animation/ScrollReveal";
+import StaggerContainer, { StaggerItem } from "@/component/common/animation/StaggerContainer";
 
 const projects = [
   {
-    title: "EcoPulse AI",
-    category: "AI Platform",
-    description: "A state-of-the-art sustainability analytics platform providing real-time environmental impact insights.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
-    link: "#",
-    github: "#",
+    title: "Shoe Store",
+    category: "ecommerce platform",
+    description: "A premium e-commerce platform featuring an immersive shopping experience with dynamic product showcases and seamless checkout.",
+    image: "/res/images/shoeweb.png",
+    link: "https://online-shoes-store-nine.vercel.app/",
+    
   },
   {
     title: "Nova Fintech",
@@ -31,13 +35,15 @@ const projects = [
 ];
 
 export default function Section3() {
+  const router = useRouter();
+  
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12 md:py-32" suppressHydrationWarning>
       
       <div className="mx-auto ">
         <div className="relative mb-16 flex flex-col items-end text-right md:mb-24">
           {/* Robotic Hand on Left Side */}
-          <div className="absolute left-4 -translate-x-[10%] -translate-y-[20%] w-[50%]  pointer-events-none hidden lg:block">
+          <Parallax speed={-0.3} className="absolute left-0 top-0 -translate-x-[10%] -translate-y-[20%] w-[40%] max-w-[500px] pointer-events-none hidden lg:block">
             <div className="relative">
               {/* Ambient Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px]"></div>
@@ -54,23 +60,26 @@ export default function Section3() {
                 }}
               />
             </div>
-          </div>
+          </Parallax>
 
-          <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
-            Featured Works
-          </h2>
-          <h3 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
-            Pushing the Limits of <br />
-            <span className="text-zinc-500">Digital Possibilities.</span>
-          </h3>
+          <Parallax speed={0.8}>
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-600">
+              Featured Works
+            </h2>
+            <h3 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+              Pushing the Limits of <br />
+              <span className="text-zinc-500">Digital Possibilities.</span>
+            </h3>
+          </Parallax>
         </div>
-
-        <div className="grid gap-16 lg:grid-cols-1">
+        
+        <ScrollReveal direction="left" duration={0.6} delay={0.5}>
+        <StaggerContainer staggerDelay={0.5}  className="grid gap-16 lg:grid-cols-1">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative grid gap-12 lg:grid-cols-2 lg:items-center"
-            >
+            <StaggerItem key={index}>
+              <div
+                className="group relative grid gap-12 lg:grid-cols-2 lg:items-center"
+              >
               {/* Laptop Mockup Side */}
               <div className={`relative ${index % 2 !== 0 ? "lg:order-2" : ""}`}>
                 {/* Mockup Frame */}
@@ -82,6 +91,8 @@ export default function Section3() {
                       src={project.image}
                       alt={project.title}
                       fill
+                      unoptimized
+                      priority={index === 0}
                       className="object-cover transition-opacity duration-700 opacity-80 group-hover:opacity-100"
                     />
                     {/* Screen Glare */}
@@ -112,26 +123,24 @@ export default function Section3() {
                     href={project.link}
                     className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:text-blue-400"
                   >
-                    Explore Case Study <ExternalLink size={18} />
-                  </a>
-                  <a
-                    href={project.github}
-                    className="text-zinc-500 transition-colors hover:text-white"
-                  >
-                    <Github size={22} />
+                    Live Demo <ExternalLink size={18} />
                   </a>
                 </div>
               </div>
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
+        </ScrollReveal>
 
-        <div className="mt-24 text-center">
-          <button className="group relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:border-blue-500/30">
-            <span className="relative z-10 transition-colors group-hover:text-blue-400">View All Masterpieces</span>
-            <div className="absolute inset-0 -z-10 bg-blue-600/0 blur-xl transition-all duration-500 group-hover:bg-blue-600/10" />
-          </button>
-        </div>
+        <ScrollReveal delay={0.5}>
+          <div className="mt-24 text-center">
+            <button className="group relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:border-blue-500/30">
+              <span className="relative z-10 transition-colors group-hover:text-blue-400" onClick={() => router.push('/projects')}>View All Masterpieces</span>
+              <div className="absolute inset-0 -z-10 bg-blue-600/0 blur-xl transition-all duration-500 group-hover:bg-blue-600/10" />
+            </button>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

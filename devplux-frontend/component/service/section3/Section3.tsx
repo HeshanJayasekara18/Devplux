@@ -49,7 +49,15 @@ export default function Section3() {
               We don't just write code; we build relationships. Our commitment to excellence and user satisfaction sets us apart in the crowded digital landscape.
             </p>
 
-            <button className="rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:scale-105 active:scale-95">
+            <button 
+              onClick={() => {
+                const phoneNumber = "+94706096401"; // Replace with your WhatsApp number
+                const message = "Hello! I'd like to collaborate with Devplux on a project.";
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank");
+              }}
+              className="rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:scale-105 active:scale-95"
+            >
               Let's Collaborate
             </button>
           </div>

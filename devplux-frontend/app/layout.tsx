@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/component/common/SmoothScrolling";
+import WhatsAppButton from "@/component/common/whatsapp/WhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,12 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={`${inter.variable} font-sans antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
+        
+        {/* WhatsApp Floating Button */}
+        <WhatsAppButton />
         
         {/* Gooey Filter */}
         <svg style={{ visibility: 'hidden', position: 'absolute' }} width="0" height="0">

@@ -3,6 +3,8 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import { Code, Smartphone, Palette } from 'lucide-react';
+import ScrollReveal from '@/component/common/animation/ScrollReveal';
+import StaggerContainer, { StaggerItem } from '@/component/common/animation/StaggerContainer';
 
 const services = [
   {
@@ -77,17 +79,19 @@ export default function Section2() {
       <div className="mx-auto ">
         {/* Top Header */}
         <div className="relative mb-2 min-h-[450px] flex items-start">
-          <div className="relative z-10 pt-8 max-w-xl">
-            <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-600">
-              OUR EXPERTISE
-            </h2>
-            <h1 className="text-[56px] font-bold leading-[1.1] text-white mb-1">
-              Digital Solutions for the
-            </h1>
-            <h1 className="text-[56px] font-bold leading-[1.1] text-gray-600">
-              Modern Era.
-            </h1>
-          </div>
+          <ScrollReveal delay={0.1}>
+            <div className="relative z-10 pt-8 max-w-xl">
+              <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-600">
+                OUR EXPERTISE
+              </h2>
+              <h1 className="text-[56px] font-bold leading-[1.1] text-white mb-1">
+                Digital Solutions for the
+              </h1>
+              <h1 className="text-[56px] font-bold leading-[1.1] text-gray-600">
+                Modern Era.
+              </h1>
+            </div>
+          </ScrollReveal>
 
           {/* Right - 3D Robotic Hand */}
           <div className="absolute mr-12 mtop-0 right-0 w-[70%] h-full flex items-start justify-end pointer-events-none">
@@ -121,12 +125,12 @@ export default function Section2() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid gap-6 md:grid-cols-3 relative z-10">
+        <StaggerContainer staggerDelay={0.15} className="grid gap-6 md:grid-cols-3 relative z-10">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative flex flex-col items-start rounded-[28px] border border-zinc-800/60 bg-gradient-to-br from-zinc-900/40 to-black/60 backdrop-blur-sm p-8 transition-all duration-500 hover:border-blue-500/30 hover:bg-gradient-to-br hover:from-zinc-900/60 hover:to-black/80"
-            >
+            <StaggerItem key={index}>
+              <div
+                className="group relative flex flex-col items-start rounded-[28px] border border-zinc-800/60 bg-gradient-to-br from-zinc-900/40 to-black/60 backdrop-blur-sm p-8 transition-all duration-500 hover:border-blue-500/30 hover:bg-gradient-to-br hover:from-zinc-900/60 hover:to-black/80"
+              >
               {/* Icon */}
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-zinc-900/50 border border-zinc-800/60 transition-all duration-300 group-hover:bg-blue-950/30 group-hover:border-blue-500/20">
                 <service.icon size={22} className="text-blue-500" />
@@ -142,8 +146,9 @@ export default function Section2() {
                 {service.description}
               </p>
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
 
       <style>{`

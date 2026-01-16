@@ -2,8 +2,11 @@
 
 import { Sparkles } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
+import ScrollReveal from "@/component/common/animation/ScrollReveal";
 
 export default function Section1() {
+  const router = useRouter();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const targetPosition = useRef({ x: 0, y: 0 });
   const currentPosition = useRef({ x: 0, y: 0 });
@@ -62,27 +65,33 @@ export default function Section1() {
 
       <div className="relative z-10 mx-auto max-w-7xl w-full">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-400 backdrop-blur-md">
-            <Sparkles size={14} /> Our Expertise
-          </div>
+          <ScrollReveal delay={0.1}>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-400 backdrop-blur-md">
+              <Sparkles size={14} /> Our Expertise
+            </div>
+          </ScrollReveal>
           
-          <h1 className="mb-8 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
-            Digital Solutions <br />
-            Tailored for <span className="text-blue-500">Excellence.</span>
-          </h1>
+          <ScrollReveal delay={0.2}>
+            <h1 className="mb-8 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+              Digital Solutions <br />
+              Tailored for <span className="text-blue-500">Excellence.</span>
+            </h1>
+          </ScrollReveal>
           
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl">
-            We specialize in crafting bespoke digital experiences that combine innovative design with cutting-edge technology to drive your business forward.
-          </p>
+          <ScrollReveal delay={0.3}>
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl">
+              We specialize in crafting bespoke digital experiences that combine innovative design with cutting-edge technology to drive your business forward.
+            </p>
+          </ScrollReveal>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10">
+          <ScrollReveal delay={0.4}>
+            <div className="flex flex-wrap justify-center gap-4">
+            <button className="rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10" onClick={() => router.push('/contact')}>
               Start Your Project
             </button>
-            <button className="rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-white/10 hover:border-white/20">
-              View Our Process
-            </button>
+            
           </div>
+          </ScrollReveal>
         </div>
       </div>
 
