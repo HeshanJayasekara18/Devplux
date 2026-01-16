@@ -39,7 +39,7 @@ export default function Section2() {
   });
 
   return (
-    <section ref={containerRef} className="relative min-h-screen w-full bg-black py-24">
+    <section ref={containerRef} className="relative  w-full bg-black py-24">
         {/* Background Gradients */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
              <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[100px]" />
