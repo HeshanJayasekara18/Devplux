@@ -39,7 +39,8 @@ export default function Section3() {
   
   return (
     <section className="relative w-full bg-black py-24 px-6 md:px-12 md:py-32" suppressHydrationWarning>
-      <div className="mx-auto max-w-7xl">
+      
+      <div className="mx-auto ">
         <div className="relative mb-16 flex flex-col items-end text-right md:mb-24">
           {/* Robotic Hand on Left Side */}
           <Parallax speed={-0.3} className="absolute left-0 top-0 -translate-x-[10%] -translate-y-[20%] w-[40%] max-w-[500px] pointer-events-none hidden lg:block">
@@ -82,7 +83,7 @@ export default function Section3() {
               {/* Laptop Mockup Side */}
               <div className={`relative ${index % 2 !== 0 ? "lg:order-2" : ""}`}>
                 {/* Mockup Frame */}
-                <div className="relative mx-auto w-full max-w-[600px] transition-transform duration-700 group-hover:scale-105">
+                <div className="relative mt-20 mx-auto w-full max-w-[600px] transition-transform duration-700 group-hover:scale-105">
                   {/* Screen Frame */}
                   <div className="relative aspect-16/10 overflow-hidden rounded-t-3xl border-[6px] border-[#1e1e1e] bg-[#0a0a0a] shadow-2xl transition-all duration-500 group-hover:border-blue-500/30">
                     <div className="absolute inset-x-0 top-0 z-10 h-1.5 bg-linear-to-b from-white/5 to-transparent" />
